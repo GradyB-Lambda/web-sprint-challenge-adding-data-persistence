@@ -1,21 +1,18 @@
-// build your server here and require it from index.js
-const express = require('express')
-const helmet = require('helmet')
+const express = require('express');
+const server = express();
 
-const db = require('../data/dbConfig')
+const projectsRouter = require('./project/router');
+const resourcesRouter = require('./resource/router');
+const tasksRouter = require('./task/router');
 
-const ProjectRouter = require('./project/router')
-const ResrouceRouter = require('./resource/router')
-const TaskRouter = require('./task/router')
+server.use(express.json());
 
-const server = express()
+server.use('/api/projects', projectsRouter);
+server.use('/api/resources', resourcesRouter);
+server.use('/api/tasks', tasksRouter);
 
-server.use(helmet())
-server.use(express.json())
+server.get('/', (req, res) => {
+  res.send('<h1>test</h1>');
+});
 
-
-server.use('/api/resources', ResrouceRouter)
-server.use('/api/projects', ProjectRouter)
-server.use('/api/task', TaskRouter)
-
-module.server = server;
+module.exports = server;
