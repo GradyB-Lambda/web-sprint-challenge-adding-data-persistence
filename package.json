@@ -4,8 +4,12 @@
   "description": "Data Persistence Challenge",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "server": "nodemon indes.js",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "seed": "knex seed:run",
+    "test": "cross-env NODE_ENV=testing jest --watch --verbose --runInBand --silent"
   },
   "repository": {
     "type": "git",
@@ -20,10 +24,12 @@
     "supertest": "^6.1.3"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "helmet": "^4.4.1",
     "knex": "^0.95.2",
     "knex-cleaner": "^1.3.1",
+    "morgan": "^1.10.0",
     "sqlite3": "^5.0.2"
   }
 }

@@ -18,4 +18,4 @@ server.use('/api/resources', ResrouceRouter)
 server.use('/api/projects', ProjectRouter)
 server.use('/api/task', TaskRouter)
 
-module.server;
+module.server = server;
